@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import ow from '../source';
 
 test('optional', t => {
@@ -16,6 +17,14 @@ test('optional', t => {
 
 	t.notThrows(() => {
 		ow(undefined, ow.optional.any(ow.string, ow.number));
+	});
+
+	t.notThrows(() => {
+		ow(undefined, ow.optional.function);
+	});
+
+	t.notThrows(() => {
+		ow(() => {}, ow.optional.function);
 	});
 
 	t.throws(() => {
